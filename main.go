@@ -27,19 +27,15 @@ func executeTemplate(w http.ResponseWriter, filepath string) {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	tplPath := filepath.Join("templates", "home.gohtml")
-	executeTemplate(w, tplPath)
+	executeTemplate(w, filepath.Join("templates", "home.gohtml"))
 }
 
 func contactHandler(w http.ResponseWriter, r *http.Request) {
-	tplPath := filepath.Join("templates", "contact.gohtml")
-	executeTemplate(w, tplPath)
+	executeTemplate(w, filepath.Join("templates", "contact.gohtml"))
 }
 
 func faqHandler(w http.ResponseWriter, r *http.Request) {
-	var faqHTML string = "<body><main><h1 class=\"faq-heading\">FAQ'S</h1><section class=\"faq-container\"><div class=\"faq-one\"><!-- faq question --><h1 class=\"faq-page\">What is an FAQ Page?</h1><!-- faq answer --><div class=\"faq-body\"> <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum aperiam. Perspiciatis, porro!</p></div></div><hr class=\"hr-line\"><div class=\"faq-two\"><!-- faq question --><h1 class=\"faq-page\">Why do you need an FAQ page?</h1><!-- faq answer --><div class=\"faq-body\"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum aperiam. Perspiciatis, porro!</p></div></div><hr class=\"hr-line\"><div class=\"faq-three\"><!-- faq question --><h1 class=\"faq-page\">Does it improves the user experience of a website?</h1><!-- faq answer --><div class=\"faq-body\"><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit saepe sequi, illum facere necessitatibus cum aliquam id illo omnis maxime, totam soluta voluptate amet ut sit ipsum aperiam. Perspiciatis, porro!</p></div></div></section></main></body>"
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	fmt.Fprint(w, faqHTML)
+	executeTemplate(w, filepath.Join("templates", "faq.gohtml"))
 }
 
 func main() {
