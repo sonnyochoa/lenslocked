@@ -225,14 +225,14 @@ func main() {
 	// fmt.Println("Created sample tweets.")
 
 	// Retweet
-	parentTweetID := 1
-	userID := 2
-	tweet := "Reply to a fake tweet. R.E.P.L.Y."
-	_, err = db.Exec(`
-		INSERT INTO tweet_reply(parent_tweet_id, user_id, content)
-		VALUES($1, $2, $3)`, parentTweetID, userID, tweet)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Created sample retweets.")
+	// parentTweetID := 1
+	// userID := 2
+	// tweet := "Reply to a fake tweet. R.E.P.L.Y."
+	// _, err = db.Exec(`
+	// 	INSERT INTO tweet_reply(parent_tweet_id, user_id, content)
+	// 	VALUES($1, $2, $3)`, parentTweetID, userID, tweet)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// fmt.Println("Created sample retweets.")
 }
