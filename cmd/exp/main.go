@@ -1,10 +1,9 @@
 package main
 
 import (
-	"database/sql"
 	"fmt"
 
-	_ "github.com/jackc/pgx/v4/stdlib"
+	"github.com/sonnyochoa/lenslocked/models"
 )
 
 type PostgresConfig struct {
@@ -21,16 +20,8 @@ func (cfg PostgresConfig) String() string {
 }
 
 func main() {
-	cfg := PostgresConfig{
-		Host:     "localhost",
-		Port:     "5432",
-		User:     "baloo",
-		Password: "junglebook",
-		Database: "lenslocked",
-		SSLMode:  "disable",
-	}
-
-	db, err := sql.Open("pgx", cfg.String())
+	cfg := models.DefaultPostgresConfig()
+	db, err := models.Open(cfg)
 
 	if err != nil {
 		panic(err)
@@ -44,6 +35,15 @@ func main() {
 	}
 
 	fmt.Println("Connected...")
+
+	us := models.UserService{
+		DB: db,
+	}
+	user, err := us.Create("bob3@bob.com", "bob3123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(user)
 
 	// Create a database
 	// _, err = db.Exec(`
