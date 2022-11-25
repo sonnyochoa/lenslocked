@@ -1,2 +1,4 @@
 # ignore the lenslocked binary
 lenslocked
+
+cmd/exp/
